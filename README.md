@@ -64,7 +64,7 @@ If you wish to run application from cloned repository:
 If you wish to access the application without cloning it to your computer,simply follow this simple step:
 - Access the website by going to the following link:
    
-               https://app.netlify.com/sites/poetic-nasturtium-49afc1
+               https://poetic-nasturtium-49afc1.netlify.app/
 ---
 ## Authors
 This project was contributed to by:
