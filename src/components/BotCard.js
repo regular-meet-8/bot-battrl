@@ -1,9 +1,8 @@
-import React,{ useState } from "react";
+import React from 'react'
 
 function BotCard({bot,addMyBot,removeMyBot,deleteBot}){
 
     // console.log(bot)
-    const [isAdded,setIsAdded] = useState(false);
 
     function cardClicked(){
         addMyBot(bot);

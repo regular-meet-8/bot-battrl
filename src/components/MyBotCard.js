@@ -1,8 +1,10 @@
 import React,{} from "react";
 
-function MyBotCard({bot,removeMyBot}){ 
+function MyBotCard({bot,removeMyBot}){
 
-    if (bot.length==0){
+    
+
+    if (bot.length===0){
         return 
     }
 
@@ -25,7 +27,6 @@ function MyBotCard({bot,removeMyBot}){
                     <span className="mx-2" >{`⚡${bot.damage}`}</span>
                     <span className="mx-2" >{`🛡${bot.armor}`}</span>
 
-                    {/* {`♥${bot.health} 💥${bot.damage} 🛡${bot.armor} `} */}
                 </div>
             </div>
         // </div>

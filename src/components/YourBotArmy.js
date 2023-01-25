@@ -1,9 +1,8 @@
-import React,{ useEffect, useState } from "react";
+import React from "react";
 import '../stylesheets/YourBotArmy.css';
-import BotCard from "./BotCard";
+
 import MyBotCard from "./MyBotCard";
 
-const API = "https://bot-battlr-db-json.vercel.app/api/bots"
 
 function YourBotArmy({myBots,removeMyBot}){
 
@@ -36,4 +35,4 @@ function YourBotArmy({myBots,removeMyBot}){
     )
 }
 
-export default YourBotArmy;
+export default YourBotArmy

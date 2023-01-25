@@ -1,50 +1,51 @@
-import React,{ useState } from "react";
+import React,{ useEffect, useState } from "react";
+import '../stylesheets/BotCollection.css';
+import BotCard from "./BotCard";
 
-function BotCollection({bot,addMyBot,removeMyBot,deleteBot}){
+const API = "https://api.npoint.io/8085765abb1a086a19d8"
+function BotCollection({addMyBot,removeMyBot}){
 
-    // console.log(bot)
-    const [isAdded,setIsAdded] = useState(false);
-
-    function cardClicked(){
-        addMyBot(bot);
-    }
-
-    function deleteClicked(e){
-        e.stopPropagation()
-        if(window.confirm('This operation is permanent, do you still want to continue?'))
-        {
-            removeMyBot(bot);
-            deleteBot(bot);
-        }
+    const [bots,setBots] = useState([]);
+    useEffect(()=>{
+        fetch(API)
+        .then(resp=>resp.json())
+        .then(data=>{
+            setBots(data)
+        })
+        // console.log("in useeffect")
         
+    },[])
+
+    function deleteBot(bot){
+        fetch(`${API}/${bot.id}`,{
+            method:"DELETE"
+        })
+        .then(resp=>resp.json())
+        .then(data=>console.log(data))
+        const newBots = bots.filter((item)=>item.id!==bot.id)
+        setBots(newBots);
     }
+
+    const botsList = bots?.map((bot)=>{
+        return(
+            <BotCard
+            key={`botsList`+bot.id}
+            bot={bot}
+            addMyBot={addMyBot}
+            removeMyBot={removeMyBot}
+            deleteBot={deleteBot}
+            />
+        )
+    })
 
     return(
-
-        <div className="col-3 p-1 my-2">
-            <div
-            className="card h-100" style={{width:"18rem"}}
-            onClick={cardClicked}
-            >
-                <div className="card-header d-flex justify-content-end" >
-                    <button className="btn btn-danger btn-sm"
-                    onClick={deleteClicked}
-                    >X</button>
-                </div>
-                <img src={bot.avatar_url} className="card-img-top " alt={bot.avatar_url}/>
-                <div className="card-body">
-                    <h5 className="card-title">{bot.name}</h5>
-                    <p className="card-text">{bot.catchphrase}</p>
-                </div>
-                <div className="card-footer d-flex justify-content-center">
-                    <span className="mx-2" style={{ color: '#ff69b4', fontSize: '2rem'}}>❤ {bot.health}</span>
-                    <span className="mx-2" style={{ color: '#ffa500', fontSize: '2rem'}}>⚡ {bot.damage}</span>
-                    <span className="mx-2" style={{ color: '#00bfff', fontSize: '2rem'}}>🛡{bot.armor}</span>
-                </div>
-
+        <div className="container mt-2 border-3" >
+            <h2>BOT COLLECTION</h2>
+            <div className="row border-0" >
+                {botsList}
             </div>
         </div>
     )
 }
 
-export default BotCollection;
+export default BotCollection
