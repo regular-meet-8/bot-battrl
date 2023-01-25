@@ -1,8 +1,6 @@
 import React,{} from "react";
 
-function MyBotCard({bot,removeMyBot}){
-
-    
+function MyBotCard({bot,removeMyBot}){ 
 
     if (bot.length==0){
         return 

@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import '../stylesheets/App.css';
+import '../App.css';
 import BotCollection from './BotCollection';
 import Navbar from './Navbar';
 import YourBotArmy from './YourBotArmy';
