@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import '../App.css';
 import BotCollection from './BotCollection';
 import Navbar from './Navbar';
@@ -7,6 +7,10 @@ import YourBotArmy from './YourBotArmy';
 function App() {
 
   const [myBots,setMyBots] = useState([]);
+
+  useEffect(()=>{
+    
+  },[0])
 
   function addMyBot(bot){
     if(myBots.filter((item)=>item.id==bot.id).length==0){
@@ -30,6 +34,7 @@ function App() {
       removeMyBot={removeMyBot}
       />
       <BotCollection
+
       addMyBot={addMyBot}
       removeMyBot={removeMyBot}
       />
